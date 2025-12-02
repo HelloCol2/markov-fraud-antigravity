@@ -228,7 +228,6 @@ where:
 
 ### Complete PPO Training Flow
 
-```mermaid
 graph TB
     Start([Start Training]) --> Init[Initialize Policy Network π_θ<br/>Initialize Value Network V_ϕ<br/>Initialize Optimizer Adam lr=2e-4]
     
@@ -238,7 +237,7 @@ graph TB
     Step1 --> GetAction[Get action: a_t ~ π_θ old s_t]
     GetAction --> GetValue[Get value: V_t = V_ϕ s_t]
     GetValue --> Execute[Execute: s_t+1, r_t ~ Env s_t, a_t]
-    Execute --> Store[Store: s_t, a_t, r_t, V_t, log π old a_t|s_t]
+    Execute --> Store[Store: s_t, a_t, r_t, V_t, log π old a_t\|s_t]
     
     Store --> CheckBuffer{Buffer Full?<br/>2048 steps}
     CheckBuffer -->|No| Step1
@@ -249,7 +248,7 @@ graph TB
     ComputeReturns --> UpdateEpochs[For epoch in range 15:]
     UpdateEpochs --> MiniBatch[For minibatch in Buffer:<br/>batch_size = 128]
     
-    MiniBatch --> Forward[Forward Pass:<br/>log π_θ a|s<br/>V_ϕ s<br/>entropy H π_θ]
+    MiniBatch --> Forward[Forward Pass:<br/>log π_θ a\|s<br/>V_ϕ s<br/>entropy H π_θ]
     
     Forward --> Ratio[Compute Ratio:<br/>r = exp log π_θ - log π_old]
     
@@ -275,7 +274,7 @@ graph TB
     style End fill:#ffe1e1
     style ClipLoss fill:#fff4e1
     style ComputeGAE fill:#e1f0ff
-```
+
 
 ### Generalized Advantage Estimation (GAE)
 
