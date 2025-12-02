@@ -1,4 +1,4 @@
-                                                                              # markov-fraud-antigravity
+# markov-fraud-antigravity
 Multi-agent reinforcement learning system modeling fraud detection as a two-player Markov game, featuring an adaptive Antigravity Defender that suppresses fraudster payoff and minimizes long-term system loss.
 
 <div align="center">
@@ -799,8 +799,6 @@ Contributors will be:
 
 ## 📞 Questions?
 
-- **GitHub Discussions**: For questions and discussions
-- **Issues**: For bugs and feature requests
-- **Email**: your.email@example.com
+- **Email**: iliajakha@gmail.com
 
 Thank you for contributing to Antigravity Defender! 🧲
