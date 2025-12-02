@@ -231,52 +231,51 @@ where:
 
 ```mermaid
 graph TB
-    Start([Start Training]) --> Init[Initialize Policy Network π_θ<br/>Initialize Value Network V_ϕ<br/>Initialize Optimizer Adam lr=2e-4]
-    
-    Init --> Collect[Collect Experience Buffer<br/>n_steps = 2048]
-    
-    Collect --> Step1[For each step t:]
-    Step1 --> GetAction[Get action: a_t ~ π_θ old s_t]
-    GetAction --> GetValue[Get value: V_t = V_ϕ s_t]
-    GetValue --> Execute[Execute: s_t+1, r_t ~ Env s_t, a_t]
-    Execute --> Store[Store: s_t, a_t, r_t, V_t, log π old a_t|s_t]
-    
-    Store --> CheckBuffer{Buffer Full?<br/>2048 steps}
-    CheckBuffer -->|No| Step1
-    CheckBuffer -->|Yes| ComputeGAE[Compute GAE Advantages:<br/>δ_t = r_t + γV_t+1 - V_t<br/>A_t = Σ γλ^k δ_t+k]
-    
-    ComputeGAE --> ComputeReturns[Compute Returns:<br/>R_t = A_t + V_t]
-    
-    ComputeReturns --> UpdateEpochs[For epoch in range 15:]
-    UpdateEpochs --> MiniBatch[For minibatch in Buffer:<br/>batch_size = 128]
-    
-    MiniBatch --> Forward[Forward Pass:<br/>log π_θ a|s<br/>V_ϕ s<br/>entropy H π_θ]
-    
-    Forward --> Ratio[Compute Ratio:<br/>r = exp log π_θ - log π_old]
-    
-    Ratio --> ClipLoss[Compute Clipped Loss:<br/>L_CLIP = -min r·A, clip r, 0.8, 1.2 ·A]
-    
-    ClipLoss --> ValueLoss[Value Loss:<br/>L_V = R - V_ϕ s ²]
-    
-    ValueLoss --> TotalLoss[Total Loss:<br/>L = L_CLIP + 0.5·L_V - 0.015·H]
-    
-    TotalLoss --> Backprop[Backpropagate<br/>Update θ, ϕ]
-    
-    Backprop --> NextBatch{More<br/>Batches?}
-    NextBatch -->|Yes| MiniBatch
-    NextBatch -->|No| NextEpoch{More<br/>Epochs?}
-    NextEpoch -->|Yes| UpdateEpochs
-    NextEpoch -->|No| UpdateOld[π_old ← π_θ]
-    
-    UpdateOld --> CheckConverge{Converged?}
-    CheckConverge -->|No| Collect
-    CheckConverge -->|Yes| End([Training Complete])
-    
-    style Start fill:#c8e6c9
-    style End fill:#ffccbc
-    style ClipLoss fill:#fff9c4
-    style ComputeGAE fill:#bbdefb
-```
+    Start([Start Training]) --> Init[Initialize Policy Network π_θ<br/>Initialize Value Network V_ϕ<br/>Initialize Optimizer Adam lr=2e-4]
+    
+    Init --> Collect[Collect Experience Buffer<br/>n_steps = 2048]
+    
+    Collect --> Step1[For each step t:]
+    Step1 --> GetAction[Get action: a_t ~ π_θ old s_t]
+    GetAction --> GetValue[Get value: V_t = V_ϕ s_t]
+    GetValue --> Execute[Execute: s_t+1, r_t ~ Env s_t, a_t]
+    Execute --> Store[Store: s_t, a_t, r_t, V_t, log π old a_t&vert;s_t]
+    
+    Store --> CheckBuffer{Buffer Full?<br/>2048 steps}
+    CheckBuffer -->|No| Step1
+    CheckBuffer -->|Yes| ComputeGAE[Compute GAE Advantages:<br/>δ_t = r_t + γV_t+1 - V_t<br/>A_t = Σ γλ^k δ_t+k]
+    
+    ComputeGAE --> ComputeReturns[Compute Returns:<br/>R_t = A_t + V_t]
+    
+    ComputeReturns --> UpdateEpochs[For epoch in range 15:]
+    UpdateEpochs --> MiniBatch[For minibatch in Buffer:<br/>batch_size = 128]
+    
+    MiniBatch --> Forward[Forward Pass:<br/>log π_θ a&vert;s<br/>V_ϕ s<br/>entropy H π_θ]
+    
+    Forward --> Ratio[Compute Ratio:<br/>r = exp log π_θ - log π_old]
+    
+    Ratio --> ClipLoss[Compute Clipped Loss:<br/>L_CLIP = -min r·A, clip r, 0.8, 1.2 ·A]
+    
+    ClipLoss --> ValueLoss[Value Loss:<br/>L_V = R - V_ϕ s ²]
+    
+    ValueLoss --> TotalLoss[Total Loss:<br/>L = L_CLIP + 0.5·L_V - 0.015·H]
+    
+    TotalLoss --> Backprop[Backpropagate<br/>Update θ, ϕ]
+    
+    Backprop --> NextBatch{More<br/>Batches?}
+    NextBatch -->|Yes| MiniBatch
+    NextBatch -->|No| NextEpoch{More<br/>Epochs?}
+    NextEpoch -->|Yes| UpdateEpochs
+    NextEpoch -->|No| UpdateOld[π_old ← π_θ]
+    
+    UpdateOld --> CheckConverge{Converged?}
+    CheckConverge -->|No| Collect
+    CheckConverge -->|Yes| End([Training Complete])
+    
+    style Start fill:#c8e6c9
+    style End fill:#ffccbc
+    style ClipLoss fill:#fff9c4
+    style ComputeGAE fill:#bbdefb
 
 ### Generalized Advantage Estimation (GAE)
 
