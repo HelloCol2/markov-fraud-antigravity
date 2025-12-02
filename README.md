@@ -13,7 +13,6 @@
 
 **Ilia Jakhaia** | [iliajakha@gmail.com](mailto:iliajakha@gmail.com) | [GitHub](https://github.com/iliajakhaia)
 
-*Submitted as part of PhD ML application portfolio*
 
 [Abstract](#-abstract) • [Research Contribution](#-research-contribution) • [Methodology](#-methodology) • [Results](#-experimental-results) • [Theory](#-theoretical-foundation)
 
