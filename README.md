@@ -1,11 +1,12 @@
+
 <div align="center">
 
 # 🧲 Antigravity Defender
 ### Multi-Agent Reinforcement Learning for Adaptive Fraud Detection via Game-Theoretic Counter-Force
 
-**A Novel MARL Framework Achieving Nash Equilibrium through Strategic Adversarial Pressure**
-
 **CMU PhD in Machine Learning (ML) application portfolio**
+
+**A Novel MARL Framework Achieving Nash Equilibrium through Strategic Adversarial Pressure**
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/RL-PPO%20%7C%20MARL-green.svg)](https://stable-baselines3.readthedocs.io/)
@@ -53,10 +54,10 @@ graph TB
     E --> G
     E --> H
     
-    style B fill:#90EE90,stroke:#333,stroke-width:3px
-    style F fill:#FFD700,stroke:#333,stroke-width:2px
-    style G fill:#FFD700,stroke:#333,stroke-width:2px
-    style H fill:#FFD700,stroke:#333,stroke-width:2px
+    style B fill:#66bb6a,stroke:#333,stroke-width:3px
+    style F fill:#ffd700,stroke:#333,stroke-width:2px
+    style G fill:#ffd700,stroke:#333,stroke-width:2px
+    style H fill:#ffd700,stroke:#333,stroke-width:2px
 ```
 
 ---
@@ -89,8 +90,8 @@ graph TB
     
     D --> E[Novel Contribution:<br/>Adaptive Counter-Force<br/>in Fraud Detection]
     
-    style D fill:#90EE90
-    style E fill:#FFD700
+    style D fill:#66bb6a
+    style E fill:#ffd700
 ```
 
 ### Novel Contributions
@@ -157,10 +158,10 @@ graph LR
     T --> RF
     T --> RD
     
-    style AF fill:#ffcccc
-    style AD fill:#ccffcc
-    style RF fill:#ffcccc
-    style RD fill:#ccffcc
+    style AF fill:#ffb3b3
+    style AD fill:#b3ffb3
+    style RF fill:#ffb3b3
+    style RD fill:#b3ffb3
 ```
 
 ### Agent Observation Spaces
@@ -228,6 +229,7 @@ where:
 
 ### Complete PPO Training Flow
 
+```mermaid
 graph TB
     Start([Start Training]) --> Init[Initialize Policy Network π_θ<br/>Initialize Value Network V_ϕ<br/>Initialize Optimizer Adam lr=2e-4]
     
@@ -237,7 +239,7 @@ graph TB
     Step1 --> GetAction[Get action: a_t ~ π_θ old s_t]
     GetAction --> GetValue[Get value: V_t = V_ϕ s_t]
     GetValue --> Execute[Execute: s_t+1, r_t ~ Env s_t, a_t]
-    Execute --> Store[Store: s_t, a_t, r_t, V_t, log π old a_t\|s_t]
+    Execute --> Store[Store: s_t, a_t, r_t, V_t, log π old a_t|s_t]
     
     Store --> CheckBuffer{Buffer Full?<br/>2048 steps}
     CheckBuffer -->|No| Step1
@@ -248,7 +250,7 @@ graph TB
     ComputeReturns --> UpdateEpochs[For epoch in range 15:]
     UpdateEpochs --> MiniBatch[For minibatch in Buffer:<br/>batch_size = 128]
     
-    MiniBatch --> Forward[Forward Pass:<br/>log π_θ a\|s<br/>V_ϕ s<br/>entropy H π_θ]
+    MiniBatch --> Forward[Forward Pass:<br/>log π_θ a|s<br/>V_ϕ s<br/>entropy H π_θ]
     
     Forward --> Ratio[Compute Ratio:<br/>r = exp log π_θ - log π_old]
     
@@ -270,11 +272,11 @@ graph TB
     CheckConverge -->|No| Collect
     CheckConverge -->|Yes| End([Training Complete])
     
-    style Start fill:#e1f5e1
-    style End fill:#ffe1e1
-    style ClipLoss fill:#fff4e1
-    style ComputeGAE fill:#e1f0ff
-
+    style Start fill:#c8e6c9
+    style End fill:#ffccbc
+    style ClipLoss fill:#fff9c4
+    style ComputeGAE fill:#bbdefb
+```
 
 ### Generalized Advantage Estimation (GAE)
 
@@ -306,8 +308,8 @@ graph TB
     GAE --> B2
     GAE --> B3
     
-    style GAE fill:#FFD700
-    style Params fill:#E1F0FF
+    style GAE fill:#ffd700
+    style Params fill:#bbdefb
 ```
 
 **Key Insight**: GAE with λ=0.98 provides excellent bias-variance balance for long-horizon fraud detection tasks.
@@ -318,7 +320,7 @@ graph TB
 
 ```mermaid
 graph LR
-    subgraph "Input Layer [10]"
+    subgraph "Input Layer - 10 features"
         I1[risk_score]
         I2[amount_norm]
         I3[time_bucket]
@@ -331,15 +333,15 @@ graph LR
         I10[defender_entropy]
     end
     
-    subgraph "Hidden Layer 1 [64]"
+    subgraph "Hidden Layer 1 - 64 neurons"
         H1[ReLU<br/>Orthogonal Init]
     end
     
-    subgraph "Hidden Layer 2 [64]"
+    subgraph "Hidden Layer 2 - 64 neurons"
         H2[ReLU<br/>Orthogonal Init]
     end
     
-    subgraph "Output [3]"
+    subgraph "Output Layer - 3 actions"
         O1[Action 0: No Attack<br/>probability]
         O2[Action 1: Low Fraud<br/>probability]
         O3[Action 2: High Fraud<br/>probability]
@@ -351,9 +353,9 @@ graph LR
     H2 --> Soft
     Soft --> O1 & O2 & O3
     
-    style H1 fill:#FFE1E1
-    style H2 fill:#FFE1E1
-    style Soft fill:#FFD700
+    style H1 fill:#ffb3b3
+    style H2 fill:#ffb3b3
+    style Soft fill:#ffd700
 ```
 
 **Parameters**: 10→64: 704 | 64→64: 4,160 | 64→3: 195 | **Total: 5,059**
@@ -362,7 +364,7 @@ graph LR
 
 ```mermaid
 graph LR
-    subgraph "Input Layer [12]"
+    subgraph "Input Layer - 12 features"
         I1[customer_risk]
         I2[amount_norm]
         I3[time_bucket]
@@ -377,15 +379,15 @@ graph LR
         I12[fraud_budget]
     end
     
-    subgraph "Deep Network [256-256-128]"
+    subgraph "Deep Network - 256-256-128"
         H1[Layer 1: 256<br/>ReLU + Dropout 0.1]
         H2[Layer 2: 256<br/>ReLU + Dropout 0.1]
         H3[Layer 3: 128<br/>ReLU]
     end
     
     subgraph "Actor-Critic Heads"
-        Actor[Actor Head [3]<br/>Softmax<br/>πθ a|s]
-        Critic[Critic Head [1]<br/>Linear<br/>Vϕ s]
+        Actor[Actor Head: 3 outputs<br/>Softmax<br/>πθ a|s]
+        Critic[Critic Head: 1 output<br/>Linear<br/>Vϕ s]
     end
     
     I1 & I2 & I3 & I4 & I5 & I6 & I7 & I8 & I9 & I10 & I11 & I12 --> H1
@@ -394,12 +396,12 @@ graph LR
     H3 --> Actor
     H3 --> Critic
     
-    style I9 fill:#FFD700
-    style H1 fill:#E1FFE1
-    style H2 fill:#E1FFE1
-    style H3 fill:#E1FFE1
-    style Actor fill:#FFE1E1
-    style Critic fill:#E1F0FF
+    style I9 fill:#ffd700
+    style H1 fill:#b3ffb3
+    style H2 fill:#b3ffb3
+    style H3 fill:#b3ffb3
+    style Actor fill:#ffb3b3
+    style Critic fill:#b3d9ff
 ```
 
 **Parameters**: 12→256: 3,328 | 256→256: 65,792 | 256→128: 32,896 | 128→3: 387 | 128→1: 129 | **Total: 102,532**
@@ -423,9 +425,9 @@ graph TB
     Eval --> Analysis[Statistical Analysis<br/>95% confidence intervals<br/>Paired t-tests]
     Analysis --> Results([Publication Results])
     
-    style Data fill:#E3F2FD
-    style Train2 fill:#C8E6C9
-    style Results fill:#FFD700
+    style Data fill:#bbdefb
+    style Train2 fill:#a5d6a7
+    style Results fill:#ffd700
 ```
 
 ### Adversarial Co-Training Process
@@ -578,9 +580,9 @@ graph TB
         C4[Static: 0.663]
     end
     
-    style A1 fill:#90EE90,stroke:#333,stroke-width:3px
-    style B1 fill:#90EE90,stroke:#333,stroke-width:3px
-    style C1 fill:#90EE90,stroke:#333,stroke-width:3px
+    style A1 fill:#66bb6a,stroke:#333,stroke-width:3px
+    style B1 fill:#66bb6a,stroke:#333,stroke-width:3px
+    style C1 fill:#66bb6a,stroke:#333,stroke-width:3px
 ```
 
 ### Key Findings
@@ -681,9 +683,9 @@ graph TB
     
     Execute([Execute in Environment])
     
-    style Strict fill:#FF6B6B,stroke:#333,stroke-width:3px
-    style P2 fill:#FFD700
-    style P5 fill:#90EE90
+    style Strict fill:#ef5350,stroke:#333,stroke-width:3px
+    style P2 fill:#ffd700
+    style P5 fill:#66bb6a
 ```
 
 ### Principle 1: Strategic Opponent Recognition
@@ -780,9 +782,9 @@ graph TB
     Viz --> Results
     Train2 --> Checkpoints
     
-    style Enhanced fill:#90EE90,stroke:#333,stroke-width:3px
-    style Train2 fill:#FFD700,stroke:#333,stroke-width:2px
-    style Checkpoints fill:#E1F0FF
+    style Enhanced fill:#66bb6a,stroke:#333,stroke-width:3px
+    style Train2 fill:#ffd700,stroke:#333,stroke-width:2px
+    style Checkpoints fill:#bbdefb
 ```
 
 ### Code Organization
