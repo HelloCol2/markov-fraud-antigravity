@@ -16,7 +16,6 @@
 
 **Ilia Jakhaia** | [iliajakha@gmail.com](mailto:iliajakha@gmail.com) | [GitHub](https://github.com/iliajakhaia)
 
-*Submitted as part of PhD ML application portfolio*
 
 [Abstract](#-abstract) • [Visual Overview](#-system-visual-overview) • [Research Contribution](#-research-contribution) • [Algorithm Deep Dive](#-algorithm-deep-dive) • [Methodology](#-methodology) • [Results](#-experimental-results) • [Architecture](#-implementation-architecture)
 
