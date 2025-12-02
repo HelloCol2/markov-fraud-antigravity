@@ -16,6 +16,8 @@
 
 **Ilia Jakhaia** | [iliajakha@gmail.com](mailto:iliajakha@gmail.com) | [GitHub](https://github.com/iliajakhaia)
 
+*Submitted as part of PhD ML application portfolio*
+
 [Abstract](#-abstract) • [Visual Overview](#-system-visual-overview) • [Research Contribution](#-research-contribution) • [Algorithm Deep Dive](#-algorithm-deep-dive) • [Methodology](#-methodology) • [Results](#-experimental-results) • [Architecture](#-implementation-architecture)
 
 </div>
@@ -907,6 +909,7 @@ sequenceDiagram
 ### Research Competencies Demonstrated
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#6cc644', 'primaryTextColor':'#fff', 'primaryBorderColor':'#333', 'lineColor':'#333', 'secondaryColor':'#4078c0', 'secondaryTextColor':'#fff', 'tertiaryColor':'#c9510c', 'tertiaryTextColor':'#fff'}}}%%
 mindmap
   root((Antigravity<br/>Defender))
     Machine Learning
