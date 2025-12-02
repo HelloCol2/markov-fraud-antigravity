@@ -16,7 +16,6 @@
 
 **Ilia Jakhaia** | [iliajakha@gmail.com](mailto:iliajakha@gmail.com) | [GitHub](https://github.com/iliajakhaia)
 
-
 [Abstract](#-abstract) • [Visual Overview](#-system-visual-overview) • [Research Contribution](#-research-contribution) • [Algorithm Deep Dive](#-algorithm-deep-dive) • [Methodology](#-methodology) • [Results](#-experimental-results) • [Architecture](#-implementation-architecture)
 
 </div>
@@ -52,10 +51,10 @@ graph TB
     E --> G
     E --> H
     
-    style B fill:#66bb6a,stroke:#333,stroke-width:3px
-    style F fill:#ffd700,stroke:#333,stroke-width:2px
-    style G fill:#ffd700,stroke:#333,stroke-width:2px
-    style H fill:#ffd700,stroke:#333,stroke-width:2px
+    style B fill:#6cc644,stroke:#333,stroke-width:3px
+    style F fill:#c9510c,stroke:#333,stroke-width:2px
+    style G fill:#c9510c,stroke:#333,stroke-width:2px
+    style H fill:#c9510c,stroke:#333,stroke-width:2px
 ```
 
 ---
@@ -88,8 +87,8 @@ graph TB
     
     D --> E[Novel Contribution:<br/>Adaptive Counter-Force<br/>in Fraud Detection]
     
-    style D fill:#66bb6a
-    style E fill:#ffd700
+    style D fill:#6cc644
+    style E fill:#c9510c
 ```
 
 ### Novel Contributions
@@ -156,10 +155,10 @@ graph LR
     T --> RF
     T --> RD
     
-    style AF fill:#ffb3b3
-    style AD fill:#b3ffb3
-    style RF fill:#ffb3b3
-    style RD fill:#b3ffb3
+    style AF fill:#bd2c00,color:#fff
+    style AD fill:#6cc644
+    style RF fill:#bd2c00,color:#fff
+    style RD fill:#6cc644
 ```
 
 ### Agent Observation Spaces
@@ -270,10 +269,10 @@ graph TB
     CheckConverge -->|No| Collect
     CheckConverge -->|Yes| End([Training Complete])
     
-    style Start fill:#c8e6c9
-    style End fill:#ffccbc
-    style ClipLoss fill:#fff9c4
-    style ComputeGAE fill:#bbdefb
+    style Start fill:#6cc644
+    style End fill:#bd2c00,color:#fff
+    style ClipLoss fill:#c9510c
+    style ComputeGAE fill:#4078c0,color:#fff
 ```
 
 ### Generalized Advantage Estimation (GAE)
@@ -306,8 +305,8 @@ graph TB
     GAE --> B2
     GAE --> B3
     
-    style GAE fill:#ffd700
-    style Params fill:#bbdefb
+    style GAE fill:#c9510c
+    style Params fill:#4078c0,color:#fff
 ```
 
 **Key Insight**: GAE with λ=0.98 provides excellent bias-variance balance for long-horizon fraud detection tasks.
@@ -351,9 +350,9 @@ graph LR
     H2 --> Soft
     Soft --> O1 & O2 & O3
     
-    style H1 fill:#ffb3b3
-    style H2 fill:#ffb3b3
-    style Soft fill:#ffd700
+    style H1 fill:#bd2c00,color:#fff
+    style H2 fill:#bd2c00,color:#fff
+    style Soft fill:#c9510c
 ```
 
 **Parameters**: 10→64: 704 | 64→64: 4,160 | 64→3: 195 | **Total: 5,059**
@@ -394,12 +393,12 @@ graph LR
     H3 --> Actor
     H3 --> Critic
     
-    style I9 fill:#ffd700
-    style H1 fill:#b3ffb3
-    style H2 fill:#b3ffb3
-    style H3 fill:#b3ffb3
-    style Actor fill:#ffb3b3
-    style Critic fill:#b3d9ff
+    style I9 fill:#c9510c
+    style H1 fill:#6cc644
+    style H2 fill:#6cc644
+    style H3 fill:#6cc644
+    style Actor fill:#bd2c00,color:#fff
+    style Critic fill:#4078c0,color:#fff
 ```
 
 **Parameters**: 12→256: 3,328 | 256→256: 65,792 | 256→128: 32,896 | 128→3: 387 | 128→1: 129 | **Total: 102,532**
@@ -423,9 +422,9 @@ graph TB
     Eval --> Analysis[Statistical Analysis<br/>95% confidence intervals<br/>Paired t-tests]
     Analysis --> Results([Publication Results])
     
-    style Data fill:#bbdefb
-    style Train2 fill:#a5d6a7
-    style Results fill:#ffd700
+    style Data fill:#4078c0,color:#fff
+    style Train2 fill:#6cc644
+    style Results fill:#c9510c
 ```
 
 ### Adversarial Co-Training Process
@@ -578,9 +577,9 @@ graph TB
         C4[Static: 0.663]
     end
     
-    style A1 fill:#66bb6a,stroke:#333,stroke-width:3px
-    style B1 fill:#66bb6a,stroke:#333,stroke-width:3px
-    style C1 fill:#66bb6a,stroke:#333,stroke-width:3px
+    style A1 fill:#6cc644,stroke:#333,stroke-width:3px
+    style B1 fill:#6cc644,stroke:#333,stroke-width:3px
+    style C1 fill:#6cc644,stroke:#333,stroke-width:3px
 ```
 
 ### Key Findings
@@ -681,9 +680,9 @@ graph TB
     
     Execute([Execute in Environment])
     
-    style Strict fill:#ef5350,stroke:#333,stroke-width:3px
-    style P2 fill:#ffd700
-    style P5 fill:#66bb6a
+    style Strict fill:#bd2c00,stroke:#333,stroke-width:3px,color:#fff
+    style P2 fill:#c9510c
+    style P5 fill:#6cc644
 ```
 
 ### Principle 1: Strategic Opponent Recognition
@@ -780,9 +779,9 @@ graph TB
     Viz --> Results
     Train2 --> Checkpoints
     
-    style Enhanced fill:#66bb6a,stroke:#333,stroke-width:3px
-    style Train2 fill:#ffd700,stroke:#333,stroke-width:2px
-    style Checkpoints fill:#bbdefb
+    style Enhanced fill:#6cc644,stroke:#333,stroke-width:3px
+    style Train2 fill:#c9510c,stroke:#333,stroke-width:2px
+    style Checkpoints fill:#4078c0,color:#fff
 ```
 
 ### Code Organization
