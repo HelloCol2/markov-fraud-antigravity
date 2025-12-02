@@ -238,7 +238,7 @@ graph TB
     Step1 --> GetAction[Get action: a_t ~ π_θ old s_t]
     GetAction --> GetValue[Get value: V_t = V_ϕ s_t]
     GetValue --> Execute[Execute: s_t+1, r_t ~ Env s_t, a_t]
-    Execute --> Store[Store: s_t, a_t, r_t, V_t, log π old a_t|s_t]
+    Execute --> Store[Store: s_t, a_t, r_t, V_t, log π(a_t&vert;s_t)]
     
     Store --> CheckBuffer{Buffer Full?<br/>2048 steps}
     CheckBuffer -->|No| Step1
@@ -249,13 +249,13 @@ graph TB
     ComputeReturns --> UpdateEpochs[For epoch in range 15:]
     UpdateEpochs --> MiniBatch[For minibatch in Buffer:<br/>batch_size = 128]
     
-    MiniBatch --> Forward[Forward Pass:<br/>log π_θ a|s<br/>V_ϕ s<br/>entropy H π_θ]
+    MiniBatch --> Forward[Forward Pass:<br/>log π_θ(a&vert;s)<br/>V_ϕ(s)<br/>entropy H(π_θ)]
     
     Forward --> Ratio[Compute Ratio:<br/>r = exp log π_θ - log π_old]
     
     Ratio --> ClipLoss[Compute Clipped Loss:<br/>L_CLIP = -min r·A, clip r, 0.8, 1.2 ·A]
     
-    ClipLoss --> ValueLoss[Value Loss:<br/>L_V = R - V_ϕ s ²]
+    ClipLoss --> ValueLoss[Value Loss:<br/>L_V = (R - V_ϕ(s))²]
     
     ValueLoss --> TotalLoss[Total Loss:<br/>L = L_CLIP + 0.5·L_V - 0.015·H]
     
@@ -385,8 +385,8 @@ graph LR
     end
     
     subgraph "Actor-Critic Heads"
-        Actor[Actor Head: 3 outputs<br/>Softmax<br/>πθ a|s]
-        Critic[Critic Head: 1 output<br/>Linear<br/>Vϕ s]
+        Actor[Actor Head: 3 outputs<br/>Softmax<br/>πθ(a&vert;s)]
+        Critic[Critic Head: 1 output<br/>Linear<br/>Vϕ(s)]
     end
     
     I1 & I2 & I3 & I4 & I5 & I6 & I7 & I8 & I9 & I10 & I11 & I12 --> H1
