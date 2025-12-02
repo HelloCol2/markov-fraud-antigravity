@@ -3,7 +3,7 @@
 # 🧲 Antigravity Defender
 ### Multi-Agent Reinforcement Learning for Adaptive Fraud Detection via Game-Theoretic Counter-Force
 
-#CMU PhD in Machine Learning (ML) application portfolio
+CMU PhD in Machine Learning (ML) application portfolio
 
 **A Novel MARL Framework Achieving Nash Equilibrium through Strategic Adversarial Pressure**
 
