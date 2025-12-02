@@ -1,4 +1,4 @@
-# markov-fraud-antigravity
+                                                                              # markov-fraud-antigravity
 Multi-agent reinforcement learning system modeling fraud detection as a two-player Markov game, featuring an adaptive Antigravity Defender that suppresses fraudster payoff and minimizes long-term system loss.
 
 <div align="center">
@@ -605,3 +605,202 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Built with** ❤️ **using game theory, reinforcement learning, and strategic thinking**
 
 </div>
+# Contributing to Antigravity Defender
+
+Thank you for your interest in contributing! This document provides guidelines for contributing to the project.
+
+## 🎯 Ways to Contribute
+
+### 1. Code Contributions
+- **New Features**: MARL algorithms (MADDPG, QMIX, PSRO)
+- **Improvements**: Performance optimization, code quality
+- **Bug Fixes**: Report and fix issues
+- **Tests**: Add unit tests and integration tests
+
+### 2. Documentation
+- Improve existing docs
+- Add tutorials or examples
+- Write blog posts or case studies
+- Create video walkthroughs
+
+### 3. Research
+- Experiment with different hyperparameters
+- Test on real-world datasets
+- Analyze interpretability (SHAP, attention)
+- Compare with other MARL approaches
+
+## 🔧 Development Setup
+
+```bash
+# Fork and clone
+git clone https://github.com/yourusername/antigravity-defender.git
+cd antigravity-defender
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+pip install -r requirements-dev.txt  # For development tools
+
+# Run tests
+pytest tests/
+
+# Check code quality
+black .
+flake8 .
+mypy .
+```
+
+## 📝 Pull Request Process
+
+1. **Create a branch**: `git checkout -b feature/your-feature-name`
+2. **Make changes**: Follow code style guidelines
+3. **Add tests**: Ensure new code is tested
+4. **Update docs**: Document new features
+5. **Commit**: Use clear commit messages
+6. **Push**: `git push origin feature/your-feature-name`
+7. **Create PR**: Submit pull request with description
+
+### Commit Message Format
+
+```
+<type>: <subject>
+
+<body>
+
+<footer>
+```
+
+**Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+**Example**:
+```
+feat: Add MADDPG agent implementation
+
+- Implemented multi-agent DDPG algorithm
+- Added centralized critic for better coordination
+- Updated training pipeline to support MADDPG
+
+Closes #42
+```
+
+## 🎨 Code Style
+
+- **Python**: Follow PEP 8
+- **Formatting**: Use Black (line length 100)
+- **Type Hints**: Use type annotations
+- **Docstrings**: Google style docstrings
+
+```python
+def antigravity_decision(observation: np.ndarray, threshold: float = 0.3) -> int:
+    """
+    Apply antigravity decision logic.
+    
+    Args:
+        observation: Defender observation vector [12 features]
+        threshold: Payoff trend threshold for counter-force
+    
+    Returns:
+        Defense action {0: lenient, 1: normal, 2: strict}
+    
+    Example:
+        >>> obs = np.array([0.65, 0.72, ...])
+        >>> action = antigravity_decision(obs)
+        >>> print(action)  # 2 (strict)
+    """
+    # Implementation...
+```
+
+## 🧪 Testing Guidelines
+
+- Write unit tests for new functions
+- Add integration tests for new features
+- Maintain >80% code coverage
+- Use pytest fixtures for setup
+
+```python
+import pytest
+from env.fraud_env import FraudAntigravityEnv
+
+def test_environment_reset():
+    """Test environment reset returns correct observation shapes."""
+    env = FraudAntigravityEnv()
+    fraudster_obs, defender_obs = env.reset()
+    
+    assert fraudster_obs.shape == (10,)
+    assert defender_obs.shape == (12,)
+```
+
+## 📚 Documentation Standards
+
+- **Code**: Inline comments for complex logic
+- **Functions**: Docstrings with Args/Returns/Examples
+- **Modules**: File-level docstrings explaining purpose
+- **README**: Update if adding major features
+
+## 🐛 Bug Reports
+
+Use GitHub Issues with this template:
+
+```markdown
+**Describe the bug**
+A clear description of what the bug is.
+
+**To Reproduce**
+Steps to reproduce:
+1. Run command '...'
+2. See error
+
+**Expected behavior**
+What should happen.
+
+**Environment**
+- OS: [e.g., Ubuntu 20.04]
+- Python version: [e.g., 3.8.10]
+- Dependencies: [paste `pip freeze` output]
+
+**Additional context**
+Any other relevant information.
+```
+
+## 💡 Feature Requests
+
+Use GitHub Issues with this template:
+
+```markdown
+**Feature Description**
+Clear description of the proposed feature.
+
+**Use Case**
+Why is this feature needed?
+
+**Proposed Solution**
+How should it work?
+
+**Alternatives Considered**
+Other approaches you've thought about.
+```
+
+## 🏆 Recognition
+
+Contributors will be:
+- Listed in CONTRIBUTORS.md
+- Credited in release notes
+- Thanked in documentation
+
+## 📜 Code of Conduct
+
+- Be respectful and inclusive
+- Provide constructive feedback
+- Focus on collaboration
+- Help others learn
+
+## 📞 Questions?
+
+- **GitHub Discussions**: For questions and discussions
+- **Issues**: For bugs and feature requests
+- **Email**: your.email@example.com
+
+Thank you for contributing to Antigravity Defender! 🧲
