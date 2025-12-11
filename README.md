@@ -3,8 +3,6 @@
 # 🧲 Antigravity Defender
 ### Multi-Agent Reinforcement Learning for Adaptive Fraud Detection via Game-Theoretic Counter-Force
 
-**CMU PhD in Machine Learning (ML) application portfolio**
-
 **A Novel MARL Framework Achieving Nash Equilibrium through Strategic Adversarial Pressure**
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
